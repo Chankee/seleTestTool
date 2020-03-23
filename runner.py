@@ -1,7 +1,10 @@
 
-from serunner.utils  import  py_version_2
+from utils  import  py_version_2
 import inspect
+from data import DataTearDown
 class Runner():
+    def __init__(self,each_test_global):
+        self.test_global = DataTearDown(each_test_global)
 
     def _get_arg_msg(self,func):
         '''
@@ -76,7 +79,6 @@ class Runner():
         :return:
         '''
         kwargs = self._get_static_args(func,funcArgs)
-        print (func.__name__,kwargs)
         result = func(**kwargs)
         return result
 
