@@ -98,6 +98,7 @@ class KSelenium(object):
         关闭浏览器
         :return:
         '''
+        time.sleep(DEFAULT_SHOW_MODE_TIMEOUT)
         self.require_driver().quit()
         self.driver = None
     def _find_element(self,type,value,timeout=MAXTIME):
@@ -137,7 +138,7 @@ class KSelenium(object):
                     err = "选择器{type}类型有误".format(type=type)
                     logger.error(err)
                     raise  IncorrectSelectorType(err)
-                logger.debug('找到页面元素:  {ele}'.format(ele=element))
+                logger.debug('找到页面元素:  {type}{value}'.format(type=type,value=value))
             except:
                 if wait_time() < 0:
                     # 触发跳出循环条件
@@ -146,7 +147,8 @@ class KSelenium(object):
                     time.sleep(1)
                     logger.error("页面元素还没有找到，剩余查找时间{:.2f}".format(wait_time()))
         if  not element:
-            raise ElementNotFound("页面元素没有找到，使用{type}选择器".format(type=type))
+            # raise ElementNotFound("页面元素没有找到，使用{type}选择器".format(type=type))
+            return None
         else:
             return element
     def _find_elements(self,type,value):
@@ -317,8 +319,12 @@ class KSelenium(object):
 
     def get_attribute(self,type,value,attribute):
 
+
         element = self._find_element(type,value)
-        return element.get_attribute(attribute)
+        time.sleep(DEFAULT_SHOW_MODE_TIMEOUT)
+        if element:
+            return element.get_attribute(attribute)
+        return  None
 
 
     def is_element_present(self,type, value):
