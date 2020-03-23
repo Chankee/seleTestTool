@@ -1,4 +1,4 @@
-from serunner.sekey import _get_global
+from sekey import _get_global
 
 class Extend():
     def __init__(self,target):
