@@ -312,6 +312,22 @@ def parse_step(steps,staticActions,variables=None):
         new_step.append(dict_step)
     return new_step
 
+def parse_assert(assertor,value):
+    '''
+    解析验证器
+    '''
+    new_assertor = []
+    from serunner.utils import get_uniform_comparator,Comparators
+    cp = Comparators()
+
+    for assertor_list in assertor:
+        for key, assert_value in assertor_list.items():
+            comparator = getattr(cp, get_uniform_comparator(key))
+            fact_result = parse_after_value(assert_value[0], value)
+            check_result = parse_after_value(assert_value[1], value)
+            parse_comparator = [comparator, [fact_result, check_result]]
+            new_assertor.append(parse_comparator)
+    return new_assertor
 
 def parse_para(parameters):
     '''
