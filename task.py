@@ -50,6 +50,9 @@ class SeRunner(object):
             case.join()
 
     def run(self, path_or_testcases):
+        '''
+        运行测试套件
+        '''
 
         test_cases = loader.load_testcases(path_or_testcases)
 
@@ -105,6 +108,9 @@ class SeRunner(object):
         return test_suite
 
     def summary_result(self,results):
+        '''
+        基于测试运行下的测试报告汇总
+        '''
         for each_result,time in results:
             summary = {
                 "success": each_result.wasSuccessful(),
