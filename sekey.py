@@ -8,6 +8,10 @@ def _get_global():
 	return _KW
 
 class KeyWord():
+    '''
+    关键词执行的二次封装 ，执行 工具的demo实现，只是简单封装几个关键词
+    框架支持关键词的拓展，在extend模块添加执行函数
+    '''
 
     def start_chrome(self,url=None,headless=None):
         '''
@@ -99,13 +103,21 @@ class KeyWord():
         _get_global().switch_to_frame(type,value)
 
     def js(self,script):
+        '''
+        selenium 执行js脚本
+        '''
         return  _get_global().js(script)
 
     def select_option(self,type,value,option_by,option):
-
+        '''
+        select 标签的选择
+        '''
         _get_global().select_option(type,value,option_by,option)
 
     def max_window(self):
+        '''
+        最大化窗口
+        '''
         _get_global().maximize_window()
 
 
