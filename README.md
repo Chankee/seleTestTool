@@ -116,3 +116,5 @@
 | fact_result | 提取需要验证的值                      | False    |
 | assert      | 预期与实际结果进行验证                | False    |
 
+### 后期计划
+- 基于这个框架，用Django开发可视化平台
