@@ -118,3 +118,4 @@
 
 ### 后期计划
 - 基于这个框架，用Django开发可视化平台
+- 框架采用restful-framework格式
