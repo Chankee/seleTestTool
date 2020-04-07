@@ -124,7 +124,7 @@ class SeRunner(object):
                     'unexpectedSuccesses': len(each_result.unexpectedSuccesses)
                 }
             }
-
+            # 统计成功的测试用例
             summary["stat"]["successes"] = summary["stat"]["testsRun"] - summary["stat"]["failures"] \
                                            - summary["stat"]["errors"] - summary["stat"]["skipped"] \
                                            - summary["stat"]["expectedFailures"] - summary["stat"]["unexpectedSuccesses"]
